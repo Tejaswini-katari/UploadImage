@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>
+        Image Upload
+    </title>  
+</head>
+ 
+<body id = "body" style = "text-align:left;">
+
+<h3>Please choose the image to upload</h3><br>
+<input type="file" id="filetag">
+<img src="" id="preview">
+     
+    <script>
+    var fileTag = document.getElementById("filetag"),
+    preview = document.getElementById("preview");
+   
+fileTag.addEventListener("change", function() {
+  changeImage(this);
+});
+
+function changeImage(input) {
+  var reader;
+
+  if (input.files && input.files[0]) {
+    reader = new FileReader();
+
+    reader.onload = function(e) {
+      preview.setAttribute('src', e.target.result);
+    }
+
+    reader.readAsDataURL(input.files[0]);
+  }
+}
+    </script>
+</body>
+</html>
